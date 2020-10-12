@@ -59,6 +59,21 @@
         @endif
     </div>
     <div class="container">
+        <nav class="navbar navbar-expand-sm bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <h6 class="nav-link">Category</h6>
+                </li><li class="nav-item">
+                    <a class="nav-link" href="{{route('blogs.category',['id'=>0])}}">All</a>
+                </li>
+                @foreach($categories as $cat)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('blogs.category',['id'=>$cat->id])}}">{{$cat->name}}</a>
+                </li>
+                @endforeach
+
+            </ul>
+        </nav>
         @foreach($blogs as $blog)
         <div class="card">
             <div class="card-body">

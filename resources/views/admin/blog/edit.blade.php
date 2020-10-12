@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Blogging</title>
+    <title>{{$title}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -52,40 +52,28 @@
         @endif
     </div>
     <div class="container-fluid">
-        <a href="{{route("blogs.add")}}" class="btn btn-info pull-right">  Create Post</a>
-        <table class="table table-striped">
-            @if(!$blogs)
-                <tr>
-                    <td colspan="3">No Record not found.</td>
-                </tr>
-            @endif
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Category</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($blogs as $blog)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$blog->category->name}}</td>
-                    <td>{{$blog->title}}</td>
-                    <td>{{$blog->description}}</td>
-                    <td>{{$blog->created_at}}</td>
-                    <td>
-                        <a href="{{route('blogs.edit',['id'=>$blog->id])}}">Edit</a>
-                        <a href="{{route('blogs.delete',['id'=>$blog->id])}}">Delete</a>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-                {{$blogs->isNotEmpty()? $blogs->appends(request()->all())->links() : null}}
+        <form action="{{route("blogs.update",['id'=>$blog->id])}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" value="{{$blog->title}}" name="title">
+            </div>
+            <div class="form-group">
+                <label for="cat">Category:</label>
+                <select class="form-control" id="cat" name="cat_id" required>
+                    <option value="">Select Category</option>
+                    @foreach($categories  as $cat)
+                        <option value="{{$cat->id}}" @if($blog->cat_id == $cat->id) selected @endif>{{$cat->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" required>{{$blog->description}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
     </div>
 
 </div>

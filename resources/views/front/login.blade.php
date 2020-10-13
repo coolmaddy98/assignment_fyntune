@@ -18,7 +18,7 @@
                 <a class="nav-link" href="{{route("app")}}">Home</a>
             </li>
             <li>
-                <a href="{{route("login")}}">Login</a>
+                <a href="{{route("login")}}" class="nav-link">Login</a>
             </li>
             <li class="nav-item">
                 <a href="{{route("register")}}" class="nav-link">Register</a>

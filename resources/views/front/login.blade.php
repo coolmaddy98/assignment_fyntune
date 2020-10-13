@@ -14,16 +14,15 @@
 <div class="container">
     <nav class="navbar navbar-expand-sm bg-light">
         <ul class="navbar-nav">
-
-            <li>
-                <form class="form-inline" action="/action_page.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
-                </form>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route("app")}}">Home</a>
             </li>
             <li>
                 <a href="{{route("login")}}">Login</a>
             </li>
+            <li class="nav-item">
+                <a href="{{route("register")}}" class="nav-link">Register</a>
+            </l
         </ul>
     </nav>
     <div class="container-fluid">

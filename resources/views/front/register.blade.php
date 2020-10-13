@@ -17,14 +17,6 @@
                 <a class="nav-link" href="{{route("app")}}">Home</a>
             </li>
             <li class="nav-item">
-
-            <li class="nav-item">
-                <form class="form-inline" action="/action_page.php">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
-                </form>
-            </li>
-            <li class="nav-item">
                 <a href="{{route("login")}}" class="nav-link">Login</a>
             </li>
             <li class="nav-item">
